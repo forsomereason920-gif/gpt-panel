@@ -1,0 +1,482 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #06111f;
+  --text: #f7f9ff;
+  --muted: #aeb8ca;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* IMPORTANT:
+   The Naruto/OB53 image is NOT used as the page background. */
+body {
+  background:
+    radial-gradient(circle at 8% 34%, rgba(0, 204, 255, 0.19), transparent 32%),
+    radial-gradient(circle at 95% 43%, rgba(119, 71, 255, 0.19), transparent 34%),
+    linear-gradient(145deg, #06111f, #101936 72%, #090e21);
+}
+
+/* Subtle animated background glow */
+.ambient {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.22;
+  animation: ambientFloat 7s ease-in-out infinite alternate;
+}
+
+.ambient-a {
+  background: #00cfff;
+  left: -150px;
+  top: 32%;
+}
+
+.ambient-b {
+  background: #855dff;
+  right: -150px;
+  top: 48%;
+  animation-delay: -3s;
+}
+
+@keyframes ambientFloat {
+  to {
+    transform: translate3d(35px, -25px, 0) scale(1.08);
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 100%);
+  margin: 0 auto;
+  padding: 27px 17px 24px;
+}
+
+.hero {
+  text-align: center;
+}
+
+.brand {
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-size: clamp(22px, 5.4vw, 35px);
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.subtitle {
+  margin-top: 3px;
+  color: #aeb8ca;
+  font-size: 10px;
+  letter-spacing: 3.2px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 13px;
+  padding: 7px 13px;
+  border: 1px solid rgba(108, 220, 255, 0.25);
+  border-radius: 999px;
+  background: rgba(70, 183, 230, 0.07);
+  color: #bceeff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+}
+
+.pill span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #50e7a0;
+  box-shadow: 0 0 12px #50e7a0;
+}
+
+h1 {
+  font-family: "Space Grotesk", Inter, sans-serif;
+  margin: 18px 0 7px;
+  font-size: clamp(39px, 9vw, 65px);
+  line-height: 0.95;
+  letter-spacing: -3px;
+}
+
+h1 strong {
+  background: linear-gradient(90deg, #ffffff, #5fddff 48%, #a27cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lead {
+  margin: 0 auto 17px;
+  max-width: 560px;
+  color: #aeb8ca;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* VIDEO GLOW */
+.video-wrap {
+  position: relative;
+  margin: 0 auto;
+}
+
+.video-glow {
+  position: absolute;
+  inset: -5px;
+  border-radius: 27px;
+  background: conic-gradient(
+    from 0deg,
+    #20dfff,
+    #6d6aff,
+    #b36cff,
+    #20dfff
+  );
+  filter: blur(9px);
+  opacity: 0.72;
+  animation: spinGlow 5s linear infinite;
+}
+
+@keyframes spinGlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.video-card {
+  position: relative;
+  padding: 5px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #23dfff, #6e67ff);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.36);
+}
+
+video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 20px;
+  background: #000;
+}
+
+/* DOWNLOAD CARD */
+.download-card {
+  position: relative;
+  margin-top: 19px;
+  padding: 19px;
+  border-radius: 25px;
+  background: linear-gradient(
+    145deg,
+    rgba(39, 46, 82, 0.94),
+    rgba(20, 24, 52, 0.94)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.download-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.045) 50%,
+    transparent 75%
+  );
+  transform: translateX(-100%);
+  animation: cardShine 5s ease-in-out infinite;
+}
+
+@keyframes cardShine {
+  55%,
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+.product-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* proxyobnew.jpg ONLY appears here */
+.app-icon {
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
+  border-radius: 19px;
+  overflow: hidden;
+  border: 2px solid rgba(111, 225, 255, 0.65);
+  box-shadow: 0 0 22px rgba(50, 211, 255, 0.3);
+}
+
+.app-icon img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.product-info h2 {
+  font-family: "Space Grotesk", Inter, sans-serif;
+  margin: 0;
+  font-size: clamp(27px, 6.8vw, 40px);
+  line-height: 1;
+}
+
+.product-info p {
+  margin: 4px 0 6px;
+  color: #aeb8ca;
+  font-size: 14px;
+}
+
+.rating {
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.rating span {
+  letter-spacing: 0;
+  color: #9da8bb;
+  font-size: 11px;
+  margin-left: 5px;
+}
+
+.chips {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 12px;
+}
+
+.chips div {
+  padding: 9px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.035);
+  color: #dce2ee;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* INSTALL BUTTON */
+.install {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 61px;
+  border-radius: 19px;
+  background: linear-gradient(
+    100deg,
+    #eadcff,
+    #aaf4ff,
+    #eadcff
+  );
+  background-size: 220% 100%;
+  color: #080d19;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 22px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.35),
+    0 0 22px rgba(81, 219, 255, 0.42),
+    0 12px 32px rgba(57, 180, 255, 0.2);
+  animation:
+    buttonPulse 2s ease-in-out infinite,
+    gradientMove 3s linear infinite;
+  transition: transform 0.18s ease;
+}
+
+.install::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -5px;
+  border-radius: 23px;
+  background: linear-gradient(
+    90deg,
+    #27e7ff,
+    #9c6bff,
+    #27e7ff
+  );
+  filter: blur(11px);
+  opacity: 0.58;
+  animation: glowMove 2.6s linear infinite;
+}
+
+.install::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 19px;
+  background: linear-gradient(
+    110deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 75%
+  );
+  transform: translateX(-110%);
+  animation: sheen 2.8s ease-in-out infinite;
+}
+
+.install:hover {
+  transform: translateY(-2px);
+}
+
+.install-arrow {
+  font-size: 30px;
+  line-height: 1;
+}
+
+@keyframes buttonPulse {
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.5),
+      0 0 34px rgba(81, 219, 255, 0.62),
+      0 14px 35px rgba(57, 180, 255, 0.24);
+  }
+}
+
+@keyframes gradientMove {
+  to {
+    background-position: 220% 0;
+  }
+}
+
+@keyframes glowMove {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sheen {
+  50%,
+  100% {
+    transform: translateX(110%);
+  }
+}
+
+.note {
+  position: relative;
+  text-align: center;
+  color: #7f8ba2;
+  font-size: 10px;
+  margin: 9px 0 0;
+}
+
+footer {
+  text-align: center;
+  color: #68758b;
+  font-size: 10px;
+  margin: 15px 0 0;
+}
+
+/* MOBILE */
+@media (max-width: 560px) {
+  .container {
+    padding: 21px 14px 20px;
+  }
+
+  .subtitle {
+    letter-spacing: 2.5px;
+  }
+
+  .pill {
+    margin-top: 10px;
+  }
+
+  h1 {
+    margin-top: 15px;
+    letter-spacing: -2.3px;
+  }
+
+  .lead {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .video-card {
+    padding: 4px;
+    border-radius: 22px;
+  }
+
+  .video-glow {
+    border-radius: 25px;
+  }
+
+  video {
+    border-radius: 18px;
+  }
+
+  .download-card {
+    margin-top: 16px;
+    padding: 16px;
+    border-radius: 22px;
+  }
+
+  .app-icon {
+    width: 70px;
+    height: 70px;
+    flex-basis: 70px;
+    border-radius: 17px;
+  }
+
+  .product-row {
+    gap: 12px;
+  }
+
+  .product-info h2 {
+    font-size: 27px;
+  }
+
+  .product-info p {
+    font-size: 12px;
+  }
+
+  .rating {
+    font-size: 12px;
+  }
+
+  .rating span {
+    font-size: 10px;
+  }
+
+  .chips {
+    margin: 13px 0 12px;
+  }
+
+  .chips div {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+
+  .install {
+    min-height: 57px;
+    font-size: 20px;
+    border-radius: 17px;
+  }
+}
